@@ -48,7 +48,7 @@ static void keyboard_send_hid_report(uint8_t report_id) {
     const uint8_t dah_report = 0x02;
 
     // every 100ms force a report
-    const uint32_t interval_ms = 100;
+    const uint32_t interval_ms = 300; // was 100ms
     static uint32_t start_ms = 0;
     if ( board_millis() - start_ms >= interval_ms) {
         last_report = 0xFF;     // set to a value which can't occur to force a resend
@@ -64,13 +64,17 @@ static void keyboard_send_hid_report(uint8_t report_id) {
         // In Vband paddle mode we send left CTRL for dit and
         // right CTRL for dah
         if (keyer_dit) {
-            // keycode[i++] = HID_KEY_CONTROL_LEFT;
-            keycode[i++] = HID_KEY_A;
+            // keycode[i++] = HID_KEY_CONTROL_LEFT; // for original vband paddle mode
+            keycode[i++] = HID_KEY_B; // for dahditdahdit mode 
+            //keycode[i++] = HID_KEY_LEFT_ARROW; // for arrow mode
+            // keycode[i++] = HID_KEYPAD_LEFT_ANGLE_BRACE; // for arrow mode
             report |= dit_report;
         }
         if (keyer_dah) {
-            // keycode[i++] = HID_KEY_CONTROL_RIGHT;
-            keycode[i++] = HID_KEY_B;
+            // keycode[i++] = HID_KEY_CONTROL_RIGHT; // for original vband paddle mode
+            keycode[i++] = HID_KEY_A; // for ditdahditdah mode
+            // keycode[i++] = HID_KEY_RIGHT_ARROW; // for arrow mode (needs correct HID keycode)
+            //keycode[i++] = HID_KEY_RIGHT_ANGLE_BRACE; // for brace mode (needs correct HID keycode)
             report |= dah_report;
         }
 
