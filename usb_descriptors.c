@@ -170,8 +170,8 @@ uint8_t const * tud_descriptor_configuration_cb(uint8_t index) {
 // array of pointer to string descriptors
 char const* string_desc_arr [] = {
     (const char[]) { 0x09, 0x04 }, // 0: is supported language is English (0x0409)
-    "M5NCW",                       // 1: Manufacturer
-    "Morse Key Keyboard",          // 2: Product
+    "M5NCW, M7PZE hacks",          // 1: Manufacturer
+    "Morse Key-board",             // 2: Product
     "73",                          // 3: Serials, should use chip ID
 };
 

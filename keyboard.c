@@ -64,11 +64,13 @@ static void keyboard_send_hid_report(uint8_t report_id) {
         // In Vband paddle mode we send left CTRL for dit and
         // right CTRL for dah
         if (keyer_dit) {
-            keycode[i++] = HID_KEY_CONTROL_LEFT;
+            // keycode[i++] = HID_KEY_CONTROL_LEFT;
+            keycode[i++] = HID_KEY_A;
             report |= dit_report;
         }
         if (keyer_dah) {
-            keycode[i++] = HID_KEY_CONTROL_RIGHT;
+            // keycode[i++] = HID_KEY_CONTROL_RIGHT;
+            keycode[i++] = HID_KEY_B;
             report |= dah_report;
         }
 
@@ -106,7 +108,7 @@ void keyboard_task(void) {
 // Invoked when sent REPORT successfully to host
 // Application can use this to send the next report
 // Note: For composite reports, report[0] is report ID
-void tud_hid_report_complete_cb(uint8_t instance, uint8_t const* report, uint8_t len) {
+void tud_hid_report_complete_cb(uint8_t instance, uint8_t const* report, uint16_t len) {
     (void) instance;
     (void) len;
 
