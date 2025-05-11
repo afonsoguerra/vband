@@ -1,5 +1,7 @@
 # Raspberry Pi Pico 2040 vband compatible morse keyer interface
 
+Quick Note: This repository has a modified version of the original code. It defaults to Dahditdahdit mode (A/B keypresses instead of Left/Right CTRL), and includes a 10ms debouncer to avoid spurious keying. Different key configurations can be adjusted in keyboard.c around line 67. With Thanks to M5NCW/Nick Craig-Wood for the initial version. The rest of the README is left as per the original. 
+
 This implements a USB keyboard interface for a Raspberry Pi Pico 2040 to allow you to plug in your morse straight key or paddle into your computer. It should also work on the Pico-W but doesn't use any Wifi facilities so you don't need the more expensive unit.
 
 Inputs
