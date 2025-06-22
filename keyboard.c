@@ -65,16 +65,18 @@ static void keyboard_send_hid_report(uint8_t report_id) {
         // right CTRL for dah
         if (keyer_dit) {
             // keycode[i++] = HID_KEY_CONTROL_LEFT; // for original vband paddle mode
-            keycode[i++] = HID_KEY_B; // for dahditdahdit mode 
+            //keycode[i++] = HID_KEY_B; // for dahditdahdit mode 
+            //keycode[i++] = HID_KEY_X; // for https://vail.woozle.org
             //keycode[i++] = HID_KEY_ARROW_LEFT; // for arrow mode
-            // keycode[i++] = HID_KEY_BRACKET_LEFT; // for bracket mode
+            keycode[i++] = HID_KEY_BRACKET_RIGHT; // for bracket mode
             report |= dit_report;
         }
         if (keyer_dah) {
             // keycode[i++] = HID_KEY_CONTROL_RIGHT; // for original vband paddle mode
-            keycode[i++] = HID_KEY_A; // for ditdahditdah mode
+            //keycode[i++] = HID_KEY_A; // for ditdahditdah mode
+            //keycode[i++] = HID_KEY_Z; // for https://vail.woozle.org
             // keycode[i++] = HID_KEY_ARROW_RIGHT; // for arrow mode
-            //keycode[i++] = HID_KEY_BRACKET_RIGHT; // for bracket mode
+            keycode[i++] = HID_KEY_BRACKET_LEFT; // for bracket mode
             report |= dah_report;
         }
 
